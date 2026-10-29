@@ -9,6 +9,7 @@ export interface ServiceItem {
 
 export const COMPANY_INFO = {
   name: 'MMR MOTORS LTD',
+  logo: '/assets/aistudio/MMR_Motors_Chrome_Racing_Logo_dfa94b36.png',
   tagline: 'Your Trusted Partner for Vehicle Care',
   subheading: 'Vehicle maintenance, repair services and used car sales from MMR MOTORS LTD.',
   address: {

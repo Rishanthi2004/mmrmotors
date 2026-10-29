@@ -12,11 +12,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
           {/* Brand & Overview */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-2.5">
-              <span className="w-2 h-5 bg-red-600 rounded-xs"></span>
-              <span className="text-xl font-bold font-display text-white tracking-tight">
-                MMR MOTORS <span className="text-red-500 font-semibold text-base">LTD</span>
-              </span>
+            <div className="space-y-2">
+              <img
+                src={COMPANY_INFO.logo}
+                alt="MMR MOTORS LTD"
+                className="h-16 sm:h-20 w-auto object-contain"
+              />
             </div>
             <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm">
               Professional automotive solutions in Croydon, United Kingdom. Vehicle maintenance, mechanical repair services, and used car sales enquiries.

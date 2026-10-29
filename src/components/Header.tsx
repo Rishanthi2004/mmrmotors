@@ -48,18 +48,19 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-8">
-          {/* Zone 1: Single element brand wordmark */}
+          {/* Zone 1: Logo Only */}
           <a
             href="#home"
-            className="flex items-center gap-2.5 text-xl sm:text-2xl font-bold tracking-tight text-white whitespace-nowrap shrink-0 group"
+            className="flex items-center whitespace-nowrap shrink-0 group py-0.5"
+            aria-label="MMR MOTORS LTD - Home"
           >
-            <motion.span
-              whileHover={{ scale: 1.15 }}
-              className="w-2.5 h-6 bg-red-600 rounded-xs transition-transform"
+            <motion.img
+              whileHover={{ scale: 1.06 }}
+              transition={{ duration: 0.2 }}
+              src={COMPANY_INFO.logo}
+              alt="MMR MOTORS LTD"
+              className="h-11 sm:h-13 w-auto object-contain drop-shadow-xl"
             />
-            <span className="font-display tracking-tight text-white font-extrabold">
-              MMR MOTORS <span className="text-red-500 font-semibold text-lg sm:text-xl">LTD</span>
-            </span>
           </a>
 
           {/* Zone 2: Concise single-line navigation links with animated underline */}

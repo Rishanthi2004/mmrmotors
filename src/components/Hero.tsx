@@ -69,19 +69,24 @@ export default function Hero({ onOpenEnquiry, onNavigate }: HeroProps) {
             viewport={{ once: false, amount: 0.2 }}
             className="lg:col-span-8 space-y-6"
           >
-            {/* Location & category unboxed breadcrumb */}
+            {/* Brand Logo & Location kicker */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center gap-2 text-xs sm:text-sm font-medium tracking-wide text-neutral-400"
+              className="flex flex-col sm:flex-row sm:items-center gap-4 pb-1"
             >
-              <span className="text-red-500 font-semibold uppercase tracking-wider">MMR MOTORS LTD</span>
-              <span aria-hidden="true" className="text-neutral-600">·</span>
-              <span className="flex items-center gap-1 text-neutral-300">
-                <MapPin className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                Croydon, Greater London
-              </span>
-              <span aria-hidden="true" className="text-neutral-600">·</span>
-              <span>United Kingdom</span>
+              <img
+                src={COMPANY_INFO.logo}
+                alt="MMR MOTORS LTD"
+                className="h-14 sm:h-16 w-auto object-contain filter drop-shadow-2xl"
+              />
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-medium tracking-wide text-neutral-400">
+                <span className="flex items-center gap-1.5 text-neutral-300">
+                  <MapPin className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                  Croydon, Greater London
+                </span>
+                <span aria-hidden="true" className="text-neutral-600">·</span>
+                <span>United Kingdom</span>
+              </div>
             </motion.div>
 
             {/* Main Headline */}
