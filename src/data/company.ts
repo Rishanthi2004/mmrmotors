@@ -9,7 +9,8 @@ export interface ServiceItem {
 
 export const COMPANY_INFO = {
   name: 'MMR MOTORS LTD',
-  logo: '/assets/aistudio/MMR_Motors_Chrome_Racing_Logo_dfa94b36.png',
+  logo: '/images/logo.png',
+  heroImage: '/images/hero.jpg',
   tagline: 'Your Trusted Partner for Vehicle Care',
   subheading: 'Vehicle maintenance, repair services and used car sales from MMR MOTORS LTD.',
   address: {
@@ -49,7 +50,7 @@ export const SERVICES: ServiceItem[] = [
       'Brake pad & disc safety inspections',
       'Tyre tread depth & pressure assessment',
     ],
-    image: '/src/assets/images/service_maintenance_1793255217217.jpg',
+    image: '/images/maintenance.jpg',
     iconName: 'Settings',
   },
   {
@@ -64,7 +65,7 @@ export const SERVICES: ServiceItem[] = [
       'Cooling system, radiator & hose repairs',
       'Exhaust repairs and component replacements',
     ],
-    image: '/src/assets/images/service_repairs_1793255218270.jpg',
+    image: '/images/repairs.jpg',
     iconName: 'Wrench',
   },
   {
@@ -79,7 +80,7 @@ export const SERVICES: ServiceItem[] = [
       'Straightforward, direct customer advice',
       'Personalised consultation on incoming vehicles',
     ],
-    image: '/src/assets/images/used_car_showroom_1793255217450.jpg',
+    image: '/images/used-cars.jpg',
     iconName: 'Car',
   },
 ];

@@ -60,7 +60,7 @@ export default function UsedCars({ onOpenEnquiry }: UsedCarsProps) {
               <motion.img
                 whileHover={{ scale: 1.04 }}
                 transition={{ duration: 0.5 }}
-                src="/src/assets/images/used_car_showroom_1793255217450.jpg"
+                src="/images/used-cars.jpg"
                 alt="Used car sales showroom MMR Motors Ltd"
                 className="w-full h-full object-cover object-center filter brightness-95"
                 referrerPolicy="no-referrer"

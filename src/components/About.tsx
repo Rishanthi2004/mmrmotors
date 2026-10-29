@@ -26,7 +26,7 @@ export default function About() {
                 <motion.img
                   whileHover={{ scale: 1.04 }}
                   transition={{ duration: 0.4 }}
-                  src="/src/assets/images/service_maintenance_1793255217217.jpg"
+                  src="/images/maintenance.jpg"
                   alt="MMR Motors Ltd vehicle inspection and maintenance"
                   className="w-full h-80 sm:h-96 object-cover object-center filter brightness-90"
                   referrerPolicy="no-referrer"

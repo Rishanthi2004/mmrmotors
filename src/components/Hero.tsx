@@ -36,7 +36,7 @@ export default function Hero({ onOpenEnquiry, onNavigate }: HeroProps) {
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.8, ease: 'easeOut' }}
-          src="/src/assets/images/hero_workshop_mechanic_1793255218307.jpg"
+          src={COMPANY_INFO.heroImage}
           alt="MMR Motors Ltd automotive service workshop"
           className="w-full h-full object-cover object-center filter brightness-[0.38] contrast-[1.08]"
           referrerPolicy="no-referrer"
