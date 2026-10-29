@@ -38,10 +38,10 @@ export default function FloatingActions({ onOpenEnquiry }: FloatingActionsProps)
             whileTap={{ scale: 0.95 }}
             type="button"
             onClick={onOpenEnquiry}
-            className="hidden sm:flex items-center gap-2 px-3.5 py-2.5 bg-neutral-900/95 hover:bg-neutral-800 border border-neutral-700/80 text-white text-xs font-semibold uppercase tracking-wider rounded-full shadow-2xl backdrop-blur-md"
+            className="hidden sm:flex items-center gap-2 px-3.5 py-2.5 bg-white hover:bg-neutral-50 border border-neutral-200 text-neutral-800 text-xs font-semibold uppercase tracking-wider rounded-full shadow-xl backdrop-blur-md transition-colors"
             aria-label="Open quick enquiry modal"
           >
-            <MessageSquareQuote className="w-4 h-4 text-red-500" />
+            <MessageSquareQuote className="w-4 h-4 text-orange-600" />
             <span>Enquire</span>
           </motion.button>
 
@@ -50,11 +50,11 @@ export default function FloatingActions({ onOpenEnquiry }: FloatingActionsProps)
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.92 }}
             href={COMPANY_INFO.phoneHref}
-            className="relative flex items-center justify-center p-3.5 bg-red-600 hover:bg-red-700 text-white rounded-full shadow-2xl shadow-red-950/70 group"
+            className="relative flex items-center justify-center p-3.5 bg-orange-600 hover:bg-orange-700 active:bg-orange-800 text-white rounded-full shadow-xl shadow-orange-600/40 group transition-colors"
             aria-label="Call MMR Motors directly"
           >
             {/* Ambient pulse ring */}
-            <span className="absolute -inset-1 rounded-full bg-red-600/30 animate-ping pointer-events-none" />
+            <span className="absolute -inset-1 rounded-full bg-orange-500/40 animate-ping pointer-events-none" />
             <Phone className="w-4 h-4 group-hover:rotate-12 transition-transform duration-200" />
           </motion.a>
 
@@ -64,7 +64,7 @@ export default function FloatingActions({ onOpenEnquiry }: FloatingActionsProps)
             whileTap={{ scale: 0.92 }}
             type="button"
             onClick={scrollToTop}
-            className="flex items-center justify-center p-3 bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-700/80 text-neutral-300 hover:text-white rounded-full shadow-xl backdrop-blur-sm"
+            className="flex items-center justify-center p-3 bg-white hover:bg-neutral-50 border border-neutral-200 text-neutral-700 hover:text-orange-600 rounded-full shadow-lg transition-colors"
             aria-label="Scroll back to top"
           >
             <ChevronUp className="w-4 h-4" />

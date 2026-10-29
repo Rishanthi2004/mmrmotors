@@ -42,8 +42,8 @@ export default function Header() {
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-neutral-950/92 backdrop-blur-md border-b border-neutral-800 shadow-xl shadow-black/50 py-3'
-          : 'bg-neutral-950/60 backdrop-blur-sm border-b border-white/5 py-4'
+          ? 'bg-white/95 backdrop-blur-md border-b border-neutral-200/90 shadow-md shadow-neutral-950/5 py-3'
+          : 'bg-white/85 backdrop-blur-sm border-b border-neutral-200/60 py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,12 +59,12 @@ export default function Header() {
               transition={{ duration: 0.2 }}
               src={COMPANY_INFO.logo}
               alt="MMR MOTORS LTD"
-              className="h-11 sm:h-13 w-auto object-contain drop-shadow-xl"
+              className="h-11 sm:h-13 w-auto object-contain drop-shadow-md"
             />
           </a>
 
-          {/* Zone 2: Concise single-line navigation links with animated underline */}
-          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-neutral-300">
+          {/* Zone 2: Navigation links with active indicator */}
+          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-neutral-700">
             {NAV_LINKS.map((link) => {
               const isActive = activeHash === link.href;
               return (
@@ -72,15 +72,15 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className={`hover:text-white transition-colors duration-200 whitespace-nowrap shrink-0 py-1 relative ${
-                    isActive ? 'text-white' : 'text-neutral-400'
+                  className={`hover:text-orange-600 transition-colors duration-200 whitespace-nowrap shrink-0 py-1 relative ${
+                    isActive ? 'text-orange-600 font-semibold' : 'text-neutral-600'
                   }`}
                 >
                   <span>{link.label}</span>
                   {isActive && (
                     <motion.div
                       layoutId="navActiveIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-red-500 rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-600 rounded-full"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -95,11 +95,10 @@ export default function Header() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96 }}
               href={COMPANY_INFO.phoneHref}
-              className="relative inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 active:scale-95 transition-all duration-150 rounded-sm shadow-md shadow-red-950/50 whitespace-nowrap shrink-0 overflow-hidden group"
+              className="relative inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-orange-600 hover:bg-orange-700 active:bg-orange-800 transition-all duration-150 rounded-sm shadow-md shadow-orange-600/25 whitespace-nowrap shrink-0 overflow-hidden group"
               aria-label={`Call MMR Motors Ltd at ${COMPANY_INFO.phone}`}
             >
-              {/* Subtle shimmer effect on hover */}
-              <span className="absolute inset-0 w-full h-full bg-white/15 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+              <span className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
               <Phone className="w-3.5 h-3.5 group-hover:rotate-12 transition-transform duration-200" />
               <span>Call Us</span>
             </motion.a>
@@ -110,7 +109,7 @@ export default function Header() {
             <motion.a
               whileTap={{ scale: 0.92 }}
               href={COMPANY_INFO.phoneHref}
-              className="inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2.5 text-white bg-red-600 hover:bg-red-700 active:bg-red-800 rounded-sm"
+              className="inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2.5 text-white bg-orange-600 hover:bg-orange-700 active:bg-orange-800 rounded-sm shadow-sm"
               aria-label="Call Now"
             >
               <Phone className="w-4 h-4" />
@@ -119,7 +118,7 @@ export default function Header() {
               whileTap={{ scale: 0.92 }}
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2.5 text-neutral-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-sm"
+              className="inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2.5 text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 rounded-sm"
               aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={mobileMenuOpen}
             >
@@ -137,7 +136,7 @@ export default function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="md:hidden bg-neutral-950/98 border-b border-neutral-800 backdrop-blur-xl px-4 pt-3 pb-6 overflow-hidden"
+            className="md:hidden bg-white/98 border-b border-neutral-200 backdrop-blur-xl px-4 pt-3 pb-6 overflow-hidden shadow-lg"
           >
             <nav className="flex flex-col space-y-1">
               {NAV_LINKS.map((link, idx) => (
@@ -148,22 +147,22 @@ export default function Header() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.04 }}
                   onClick={() => handleNavClick(link.href)}
-                  className="flex items-center justify-between px-3 py-2.5 text-base font-medium text-neutral-200 hover:text-white hover:bg-neutral-900 rounded-sm transition-colors"
+                  className="flex items-center justify-between px-3.5 py-3 text-base font-medium text-neutral-800 hover:text-orange-600 hover:bg-orange-50/60 rounded-sm transition-colors"
                 >
                   <span>{link.label}</span>
-                  <ChevronRight className="w-4 h-4 text-neutral-500" />
+                  <ChevronRight className="w-4 h-4 text-neutral-400" />
                 </motion.a>
               ))}
-              <div className="pt-4 border-t border-neutral-800/80 mt-2 space-y-2">
+              <div className="pt-4 border-t border-neutral-200 mt-2 space-y-2">
                 <a
                   href={COMPANY_INFO.phoneHref}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-3 px-4 text-center font-semibold text-white bg-red-600 hover:bg-red-700 rounded-sm shadow-md"
+                  className="flex items-center justify-center gap-2 w-full py-3 px-4 text-center font-semibold text-white bg-orange-600 hover:bg-orange-700 active:bg-orange-800 rounded-sm shadow-md shadow-orange-600/30"
                 >
                   <Phone className="w-4 h-4" />
                   <span>Call Us: {COMPANY_INFO.phone}</span>
                 </a>
-                <div className="text-center pt-1 text-xs text-neutral-400">
+                <div className="text-center pt-1 text-xs text-neutral-500">
                   <span>Croydon, London · Sydenham Road</span>
                 </div>
               </div>
