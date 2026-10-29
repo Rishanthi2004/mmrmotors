@@ -105,21 +105,21 @@ export default function Header() {
             </motion.a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button with 44px+ touch targets */}
           <div className="flex items-center gap-2 md:hidden">
             <motion.a
-              whileTap={{ scale: 0.9 }}
+              whileTap={{ scale: 0.92 }}
               href={COMPANY_INFO.phoneHref}
-              className="inline-flex items-center justify-center p-2 text-white bg-red-600 hover:bg-red-700 rounded-sm"
+              className="inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2.5 text-white bg-red-600 hover:bg-red-700 active:bg-red-800 rounded-sm"
               aria-label="Call Now"
             >
               <Phone className="w-4 h-4" />
             </motion.a>
             <motion.button
-              whileTap={{ scale: 0.9 }}
+              whileTap={{ scale: 0.92 }}
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-neutral-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-sm"
+              className="inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2.5 text-neutral-300 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded-sm"
               aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={mobileMenuOpen}
             >

@@ -7,98 +7,63 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-neutral-950 border-t border-neutral-800 text-neutral-400 text-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+    <footer className="bg-neutral-950 border-t border-neutral-800 text-neutral-400 text-xs sm:text-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 items-start">
           {/* Brand & Overview */}
-          <div className="lg:col-span-4 space-y-4">
-            <div className="space-y-2">
-              <img
-                src={COMPANY_INFO.logo}
-                alt="MMR MOTORS LTD"
-                className="h-16 sm:h-20 w-auto object-contain"
-              />
-            </div>
-            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm">
-              Professional automotive solutions in Croydon, United Kingdom. Vehicle maintenance, mechanical repair services, and used car sales enquiries.
+          <div className="lg:col-span-5 space-y-3">
+            <img
+              src={COMPANY_INFO.logo}
+              alt="MMR MOTORS LTD"
+              className="h-12 sm:h-16 w-auto object-contain"
+            />
+            <p className="text-xs text-neutral-400 leading-relaxed max-w-sm">
+              Vehicle maintenance, mechanical repairs, and used car sales in Croydon, UK.
             </p>
-            <div className="pt-2 text-xs text-neutral-400">
-              <span>Croydon, London · Sydenham Road</span>
-            </div>
           </div>
 
-          {/* Quick Navigation Links */}
-          <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-white font-display">
+          {/* Quick Links */}
+          <div className="lg:col-span-3 space-y-2">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white">
               Navigation
             </h4>
-            <ul className="space-y-2 text-xs">
+            <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs">
               {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="hover:text-red-400 transition-colors block py-0.5"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Core Services */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-white font-display">
-              Automotive Services
-            </h4>
-            <ul className="space-y-2 text-xs">
-              {SERVICES.map((s) => (
-                <li key={s.id}>
-                  <a
-                    href="#services"
-                    className="hover:text-red-400 transition-colors block py-0.5"
-                  >
-                    {s.title}
-                  </a>
-                </li>
-              ))}
-              <li>
                 <a
-                  href="#used-cars"
-                  className="hover:text-red-400 transition-colors block py-0.5"
+                  key={link.href}
+                  href={link.href}
+                  className="hover:text-red-400 transition-colors py-0.5"
                 >
-                  Used Car Stock Enquiries
+                  {link.label}
                 </a>
-              </li>
-            </ul>
+              ))}
+            </div>
           </div>
 
           {/* Contact Details */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-white font-display">
-              Contact Details
+          <div className="lg:col-span-4 space-y-2.5">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white">
+              Croydon Workshop
             </h4>
-            <div className="space-y-2.5 text-xs">
+            <div className="space-y-1.5 text-xs text-neutral-300">
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-                <span className="text-neutral-300 leading-relaxed">
-                  Flat 9 Solar Court, 119 Sydenham Road, Croydon, CR0 2EZ, UK
-                </span>
+                <MapPin className="w-3.5 h-3.5 text-red-500 shrink-0 mt-0.5" />
+                <span>{COMPANY_INFO.address.fullAddress}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-red-500 shrink-0" />
+                <Phone className="w-3.5 h-3.5 text-red-500 shrink-0" />
                 <a
                   href={COMPANY_INFO.phoneHref}
-                  className="text-white hover:text-red-400 transition-colors font-medium tabular-nums"
+                  className="text-white hover:text-red-400 font-semibold tabular-nums"
                 >
                   {COMPANY_INFO.phone}
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-red-500 shrink-0" />
+                <Mail className="w-3.5 h-3.5 text-red-500 shrink-0" />
                 <a
                   href={COMPANY_INFO.emailHref}
-                  className="text-neutral-300 hover:text-red-400 transition-colors truncate"
+                  className="text-neutral-300 hover:text-red-400 truncate"
                 >
                   {COMPANY_INFO.email}
                 </a>
@@ -107,15 +72,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar with exact SRS copyright notice */}
-        <div className="pt-12 mt-12 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
+        {/* Bottom Bar */}
+        <div className="pt-8 mt-8 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400">
           <p>© 2026 MMR MOTORS LTD. All rights reserved.</p>
-
           <button
             type="button"
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 hover:text-white transition-colors text-xs"
-            aria-label="Back to top of page"
+            className="flex items-center gap-1.5 hover:text-white transition-colors"
           >
             <span>Back to Top</span>
             <ArrowUp className="w-3.5 h-3.5 text-red-500" />

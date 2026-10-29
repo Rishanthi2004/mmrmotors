@@ -1,98 +1,81 @@
 import { motion } from 'motion/react';
-import { Phone, ArrowRight, MapPin, CheckCircle2, Shield, Sparkles } from 'lucide-react';
+import { Phone, ArrowRight, MapPin } from 'lucide-react';
 import { COMPANY_INFO } from '../data/company';
 
 interface HeroProps {
   onOpenEnquiry?: (service?: string) => void;
-  onNavigate?: (pageId: string) => void;
 }
 
-export default function Hero({ onOpenEnquiry, onNavigate }: HeroProps) {
+export default function Hero({ onOpenEnquiry }: HeroProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
+        staggerChildren: 0.1,
+        delayChildren: 0.05,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 15 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
+      transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
   return (
-    <section id="home" className="relative min-h-[92vh] flex items-center pt-24 pb-16 overflow-hidden">
-      {/* Background Image with Ambient Scrim & Animated Automotive Glow */}
+    <section id="home" className="relative min-h-[85vh] sm:min-h-[88vh] flex items-center pt-20 pb-12 sm:pt-28 sm:pb-16 overflow-hidden">
+      {/* Background Image with Ambient Scrim */}
       <div className="absolute inset-0 z-0">
         <motion.img
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
-          transition={{ duration: 1.8, ease: 'easeOut' }}
+          transition={{ duration: 1.5, ease: 'easeOut' }}
           src={COMPANY_INFO.heroImage}
-          alt="MMR Motors Ltd automotive service workshop"
-          className="w-full h-full object-cover object-center filter brightness-[0.38] contrast-[1.08]"
+          alt="MMR Motors Ltd automotive workshop"
+          className="w-full h-full object-cover object-center filter brightness-[0.35] contrast-[1.08]"
           referrerPolicy="no-referrer"
         />
-        {/* Subtle dynamic ambient red glow reflecting automotive workshop lighting */}
-        <motion.div
-          animate={{
-            opacity: [0.15, 0.28, 0.15],
-            scale: [1, 1.08, 1],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="absolute -top-32 left-1/4 w-[600px] h-[600px] bg-red-600/30 rounded-full blur-[140px] pointer-events-none"
-        />
-        {/* Contrast Scrims */}
-        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/85 to-neutral-950/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-neutral-950/70" />
+        {/* Ambient red lighting glow */}
+        <div className="absolute -top-24 left-1/4 w-96 h-96 bg-red-600/25 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/85 to-neutral-950/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-neutral-950/80" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Main Hero Copy */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.2 }}
-            className="lg:col-span-8 space-y-6"
+            className="lg:col-span-7 space-y-4 sm:space-y-6"
           >
-            {/* Brand Logo & Location kicker */}
+            {/* Logo & Location */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row sm:items-center gap-4 pb-1"
+              className="flex items-center gap-3"
             >
               <img
                 src={COMPANY_INFO.logo}
                 alt="MMR MOTORS LTD"
-                className="h-14 sm:h-16 w-auto object-contain filter drop-shadow-2xl"
+                className="h-12 sm:h-16 w-auto object-contain drop-shadow-2xl"
               />
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-medium tracking-wide text-neutral-400">
-                <span className="flex items-center gap-1.5 text-neutral-300">
-                  <MapPin className="w-3.5 h-3.5 text-red-500 shrink-0" />
-                  Croydon, Greater London
-                </span>
-                <span aria-hidden="true" className="text-neutral-600">·</span>
-                <span>United Kingdom</span>
+              <div className="text-xs text-neutral-400 flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                <span className="text-neutral-300 font-medium">Croydon, London</span>
               </div>
             </motion.div>
 
             {/* Main Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08] font-display"
+              className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12] font-display"
               style={{ textWrap: 'balance' }}
             >
               Your Trusted Partner for{' '}
@@ -101,143 +84,99 @@ export default function Hero({ onOpenEnquiry, onNavigate }: HeroProps) {
               </span>
             </motion.h1>
 
-            {/* Supporting Text matching SRS */}
+            {/* Concise Supporting Text */}
             <motion.p
               variants={itemVariants}
-              className="text-lg sm:text-xl text-neutral-300 max-w-2xl leading-relaxed font-normal"
+              className="text-sm sm:text-lg text-neutral-300 max-w-xl leading-relaxed"
             >
-              {COMPANY_INFO.subheading}
+              Vehicle maintenance, repair services and used car sales from MMR MOTORS LTD in Croydon.
             </motion.p>
 
-            {/* CTAs with hover physics and micro-shimmer */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 pt-4">
-              <motion.a
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.96 }}
-                href={COMPANY_INFO.phoneHref}
-                className="relative inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 rounded-sm shadow-xl shadow-red-950/60 whitespace-nowrap overflow-hidden group"
-              >
-                <span className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
-                <Phone className="w-4 h-4 group-hover:rotate-12 transition-transform duration-200" />
-                <span>Call Us Now</span>
-              </motion.a>
-
-              <motion.a
-                whileHover={{ scale: 1.02, y: -1 }}
-                whileTap={{ scale: 0.97 }}
-                href="#services"
-                onClick={(e) => {
-                  if (onNavigate) {
-                    e.preventDefault();
-                    onNavigate('services');
-                  }
-                }}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-medium text-neutral-200 hover:text-white bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-700/80 rounded-sm backdrop-blur-sm whitespace-nowrap transition-colors"
-              >
-                <span>Explore Our Services</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-
-              {onOpenEnquiry && (
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.97 }}
-                  type="button"
-                  onClick={() => onOpenEnquiry()}
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 text-sm font-medium text-neutral-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-sm transition-colors whitespace-nowrap"
-                >
-                  <span>Quick Enquiry</span>
-                </motion.button>
-              )}
-            </motion.div>
-
-            {/* Feature highlights without fake guarantees */}
+            {/* Mobile-Friendly Quick CTAs */}
             <motion.div
               variants={itemVariants}
-              className="pt-6 border-t border-neutral-800/80 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-neutral-300"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2"
             >
-              <div className="flex items-center gap-2 group">
-                <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0 group-hover:scale-110 transition-transform" />
-                <span>Vehicle Maintenance & Servicing</span>
-              </div>
-              <div className="flex items-center gap-2 group">
-                <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0 group-hover:scale-110 transition-transform" />
-                <span>Mechanical Repair Enquiries</span>
-              </div>
-              <div className="flex items-center gap-2 group">
-                <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0 group-hover:scale-110 transition-transform" />
-                <span>Used Car Stock Guidance</span>
-              </div>
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
+                href={COMPANY_INFO.phoneHref}
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 min-h-[48px] text-sm font-semibold uppercase tracking-wider text-white bg-red-600 hover:bg-red-700 active:bg-red-800 rounded-sm shadow-lg shadow-red-950/60"
+              >
+                <Phone className="w-4 h-4" />
+                <span>Call {COMPANY_INFO.phone}</span>
+              </motion.a>
+
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
+                href="#services"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 min-h-[48px] text-sm font-medium text-neutral-200 hover:text-white bg-neutral-900/90 border border-neutral-700/80 rounded-sm"
+              >
+                <span>View Services</span>
+                <ArrowRight className="w-4 h-4" />
+              </motion.a>
             </motion.div>
           </motion.div>
 
-          {/* Quick Contact & Info Card with hover lift */}
+          {/* Compact Quick Contact Card for Mobile & Desktop */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
-            className="lg:col-span-4"
+            transition={{ duration: 0.5, delay: 0.15, ease: [0.16, 1, 0.3, 1] as const }}
+            className="lg:col-span-5"
           >
-            <motion.div
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.2 }}
-              className="bg-neutral-900/90 border border-neutral-800 hover:border-neutral-700/80 p-6 sm:p-7 rounded-sm shadow-2xl backdrop-blur-md relative overflow-hidden group"
-            >
-              <div className="w-1 absolute top-0 left-0 bottom-0 bg-red-600 group-hover:w-1.5 transition-all duration-300" />
-              <div className="space-y-5">
-                <div>
-                  <span className="text-xs uppercase tracking-wider text-red-500 font-semibold block mb-1">
-                    Direct Contact
-                  </span>
-                  <h3 className="text-xl font-bold text-white font-display">Need Immediate Assistance?</h3>
-                  <p className="text-xs text-neutral-400 mt-1">
-                    Call our Croydon workshop team directly or email your vehicle enquiry.
-                  </p>
-                </div>
-
-                <div className="space-y-3 pt-2">
-                  <motion.a
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
-                    href={COMPANY_INFO.phoneHref}
-                    className="flex items-center justify-between p-3.5 bg-neutral-950 border border-neutral-800 hover:border-red-600/50 rounded-sm transition-colors group/item"
-                  >
-                    <div>
-                      <span className="text-[11px] uppercase tracking-wider text-neutral-400 block">Telephone</span>
-                      <span className="text-base font-semibold text-white group-hover/item:text-red-400 transition-colors tabular-nums">
-                        {COMPANY_INFO.phone}
-                      </span>
-                    </div>
-                    <span className="p-2 bg-red-600 text-white rounded-xs group-hover/item:scale-110 transition-transform">
-                      <Phone className="w-4 h-4" />
-                    </span>
-                  </motion.a>
-
-                  <motion.a
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
-                    href={COMPANY_INFO.emailHref}
-                    className="flex items-center justify-between p-3.5 bg-neutral-950 border border-neutral-800 hover:border-red-600/50 rounded-sm transition-colors group/item"
-                  >
-                    <div className="truncate pr-2">
-                      <span className="text-[11px] uppercase tracking-wider text-neutral-400 block">Email Address</span>
-                      <span className="text-xs font-medium text-neutral-200 group-hover/item:text-red-400 transition-colors truncate block">
-                        {COMPANY_INFO.email}
-                      </span>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover/item:text-red-400 group-hover/item:translate-x-1 transition-all shrink-0" />
-                  </motion.a>
-                </div>
-
-                <div className="pt-2 border-t border-neutral-800/80 text-xs text-neutral-400 space-y-1">
-                  <div className="flex items-start gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-red-500 shrink-0 mt-0.5" />
-                    <span>Flat 9 Solar Court, 119 Sydenham Road, Croydon, CR0 2EZ</span>
-                  </div>
-                </div>
+            <div className="bg-neutral-900/95 border border-neutral-800 p-5 sm:p-6 rounded-sm shadow-xl backdrop-blur-md space-y-4">
+              <div className="flex items-center justify-between border-b border-neutral-800/80 pb-3">
+                <span className="text-xs uppercase tracking-wider text-red-500 font-semibold">
+                  Quick Contact
+                </span>
+                <span className="text-xs text-neutral-400">Croydon, CR0 2EZ</span>
               </div>
-            </motion.div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <a
+                  href={COMPANY_INFO.phoneHref}
+                  className="flex items-center gap-3 p-3 bg-neutral-950 border border-neutral-800 hover:border-red-600/50 rounded-sm group transition-colors min-h-[48px]"
+                >
+                  <div className="p-2 bg-red-600 text-white rounded-xs shrink-0">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <div className="truncate">
+                    <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">Call</span>
+                    <span className="text-xs font-semibold text-white group-hover:text-red-400 tabular-nums">
+                      {COMPANY_INFO.phone}
+                    </span>
+                  </div>
+                </a>
+
+                <a
+                  href={COMPANY_INFO.emailHref}
+                  className="flex items-center gap-3 p-3 bg-neutral-950 border border-neutral-800 hover:border-red-600/50 rounded-sm group transition-colors min-h-[48px]"
+                >
+                  <div className="p-2 bg-neutral-800 text-red-400 rounded-xs shrink-0">
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
+                  <div className="truncate">
+                    <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">Email</span>
+                    <span className="text-xs font-medium text-white group-hover:text-red-400 truncate block">
+                      {COMPANY_INFO.email}
+                    </span>
+                  </div>
+                </a>
+              </div>
+
+              {onOpenEnquiry && (
+                <button
+                  type="button"
+                  onClick={() => onOpenEnquiry()}
+                  className="w-full py-2.5 px-4 text-xs font-semibold uppercase tracking-wider text-neutral-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-sm transition-colors text-center"
+                >
+                  Online Enquiry Form
+                </button>
+              )}
+            </div>
           </motion.div>
         </div>
       </div>
